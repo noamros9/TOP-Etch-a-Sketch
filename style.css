@@ -63,6 +63,10 @@ body{
     border: 0.25px solid rgb(202, 198, 198);
 }
 
+.cell.colored{
+    background-color: black;
+}
+
 .footer{
     border: solid 1px gold;
 
