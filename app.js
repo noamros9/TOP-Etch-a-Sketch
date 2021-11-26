@@ -1,11 +1,16 @@
 let mouseDown = 0;
+let eraseMode = 0;
 let faceSize = 16;
 
 const colorCell = (e) => {
     setTimeout(() => {
-        if(mouseDown) e.target.classList.add('colored');
+        if(mouseDown){
+            if(!eraseMode) e.target.classList.add('colored');
+            if(eraseMode) e.target.classList.remove('colored');
+        }
     }, 25);
 }
+
 
 const initDrawWithMouseClicked = () => {
     // enable drawing by click and move - hence disabling drag and drop
@@ -36,14 +41,24 @@ const clearBoard = (e) => {
     })
 }
 
+
 const setClearButton = () => {
     const clearButton = document.getElementsByClassName('clear-button')[0];
     clearButton.addEventListener('click', clearBoard)    
 }
 
+const setEraseButton = () => {
+    const eraseButton = document.getElementsByClassName('erase-button')[0];
+    eraseButton.addEventListener('click', (e) => {
+        eraseMode = !eraseMode
+        e.target.textContent = e.target.textContent == "Erase" ? "Etch" : "Erase";
+    })
+}
+
 
 const setButtonsEvents = () => {
     setClearButton();
+    setEraseButton();
 }
 
 const initGame = (faceSize) => {
