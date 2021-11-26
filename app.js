@@ -39,12 +39,18 @@ const clearBoard = (e) => {
     cells.forEach((cell) => {
         cell.classList.remove('colored')
     })
+
+    // clear board returns us to etching mode
+    eraseMode = 0;
+    document.getElementsByClassName('erase-button')[0].textContent = "Etch";
+    
 }
 
 
 const setClearButton = () => {
     const clearButton = document.getElementsByClassName('clear-button')[0];
     clearButton.addEventListener('click', clearBoard)    
+
 }
 
 const setEraseButton = () => {
