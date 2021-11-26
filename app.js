@@ -1,4 +1,11 @@
 let mouseDown = 0;
+let faceSize = 16;
+
+const colorCell = (e) => {
+    setTimeout(() => {
+        if(mouseDown) e.target.classList.add('colored');
+    }, 25);
+}
 
 const initDrawWithMouseClicked = () => {
     // enable drawing by click and move - hence disabling drag and drop
@@ -8,12 +15,6 @@ const initDrawWithMouseClicked = () => {
     document.body.onmousedown = function() { mouseDown = 1; }
     document.body.onmouseup = function() { mouseDown = 0; }
 } 
-
-const colorCell = (e) => {
-    setTimeout(() => {
-        if(mouseDown) e.target.classList.add('colored');
-    }, 25);
-}
 
 const createGrid = (faceSize) => {
     const grid = document.getElementsByClassName('grid')[0];
@@ -26,12 +27,34 @@ const createGrid = (faceSize) => {
         cell.addEventListener('mouseenter', colorCell);
         grid.appendChild(cell); 
     }
-
-    initDrawWithMouseClicked();
 }
 
-let faceSize = 40;
-createGrid(faceSize);
+const clearBoard = (e) => {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.classList.remove('colored')
+    })
+}
+
+const setClearButton = () => {
+    const clearButton = document.getElementsByClassName('clear-button')[0];
+    clearButton.addEventListener('click', clearBoard)    
+}
+
+
+const setButtonsEvents = () => {
+    setClearButton();
+}
+
+const initGame = (faceSize) => {
+    createGrid(faceSize);
+    initDrawWithMouseClicked();
+    setButtonsEvents();
+}
+
+initGame(faceSize)
+
+
 
 
 
