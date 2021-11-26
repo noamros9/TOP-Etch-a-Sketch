@@ -33,13 +33,60 @@ body{
     margin: 0 20px;
     
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30px;
     flex: 12 1;
     
 }
 
 .options{
     border: solid 1px red;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.options-buttons{
+    background-color: rgb(215, 236, 248);
+    margin: 20px 10px 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: bold; 
+}
+
+.pick-color-container{
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+
+.pick-color-container > label{
+    margin-top: 10px;
+    text-align: center;
+}
+
+#color-picker{
+    padding: 2px;
+}
+
+.change-face-size{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.change-face-size > label {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .board{

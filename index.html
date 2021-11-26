@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="style.css">
+    <script src="app.js"
+            defer></script>
     <title>Etch-a-Sketch</title>
 </head>
+
 <body>
 
     <div class="container">
@@ -17,6 +23,22 @@
         <div class="main">
             <div class="options">
                 <button class="options-buttons clear-button">Clear Board</button>
+                <button class="options-buttons erase-button">Erase</button>
+                <div class="pick-color-container">
+                    <input type="color"
+                           id="color-picker"
+                           class="options-buttons"
+                           name="color-picker">
+                    <label for="color-picker">Change Color</label>
+                </div>
+                <div class="change-face-size">
+                    <input type="range"
+                    id="face-size"
+                    class="options-buttons face-size"
+                    min="1"
+                    max="50">
+                    <label for="face-size"> a </label>
+                </div>
             </div>
             <div class="board">
                 <div class="grid">
@@ -27,6 +49,7 @@
             &copy Noam Rosenberg 2021
         </footer>
     </div>
-    
+
 </body>
+
 </html>
