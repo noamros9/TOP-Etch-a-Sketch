@@ -42,7 +42,7 @@ const clearBoard = (e) => {
 
     // clear board returns us to etching mode
     eraseMode = 0;
-    document.getElementsByClassName('erase-button')[0].textContent = "Etch";
+    document.getElementsByClassName('erase-button')[0].textContent = "Erase";
     
 }
 
@@ -61,10 +61,18 @@ const setEraseButton = () => {
     })
 }
 
+const setColorPicker = () => {
+    const colorPicker = document.getElementById('color-picker');
+    colorPicker.addEventListener('input', (e) => {
+        document.documentElement.style.setProperty('--colored-cell-color', e.target.value);
+    })
+}
+
 
 const setButtonsEvents = () => {
     setClearButton();
     setEraseButton();
+    setColorPicker();
 }
 
 const initGame = (faceSize) => {
