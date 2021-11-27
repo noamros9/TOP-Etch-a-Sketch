@@ -39,12 +39,18 @@ const clearBoard = (e) => {
     cells.forEach((cell) => {
         cell.classList.remove('colored')
     })
+
+    // clear board returns us to etching mode
+    eraseMode = 0;
+    document.getElementsByClassName('erase-button')[0].textContent = "Erase";
+    
 }
 
 
 const setClearButton = () => {
     const clearButton = document.getElementsByClassName('clear-button')[0];
     clearButton.addEventListener('click', clearBoard)    
+
 }
 
 const setEraseButton = () => {
@@ -55,10 +61,18 @@ const setEraseButton = () => {
     })
 }
 
+const setColorPicker = () => {
+    const colorPicker = document.getElementById('color-picker');
+    colorPicker.addEventListener('input', (e) => {
+        document.documentElement.style.setProperty('--colored-cell-color', e.target.value);
+    })
+}
+
 
 const setButtonsEvents = () => {
     setClearButton();
     setEraseButton();
+    setColorPicker();
 }
 
 const initGame = (faceSize) => {

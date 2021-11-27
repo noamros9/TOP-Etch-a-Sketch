@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
 
+:root{
+    --colored-cell-color: black;
+}
+
 body,html {
     margin: 0;
     padding: 0;
@@ -110,8 +114,8 @@ body{
     border: 0.25px solid rgb(202, 198, 198);
 }
 
-.cell.colored{
-    background-color: black;
+.colored{
+    background-color: var(--colored-cell-color);
 }
 
 .footer{
