@@ -1,6 +1,6 @@
 let mouseDown = 0;
 let eraseMode = 0;
-let faceSize = document.getElementById('face-size').getAttribute('value');
+let faceSize = 16;
 
 const colorCell = (e) => {
     setTimeout(() => {
@@ -83,15 +83,21 @@ const setColorPicker = () => {
 }
 
 
-const setChangeFaceSize = () => {
+const setChangeFaceSizeRange = () => {
     const range = document.getElementById('face-size');
     const faceSizeLabel = document.querySelector('.change-face-size > label');
-    faceSizeLabel.textContent = `${range.getAttribute('value')}X${range.getAttribute('value')}`
+    faceSizeLabel.textContent = `${faceSize}X${faceSize}`
 
     range.addEventListener('change', (e) => {
-        faceSize = e.target.value;
-        faceSizeLabel.textContent = `${faceSize}X${faceSize}`;
-        createGrid(faceSize);
+        faceSizeLabel.textContent = `${e.target.value}X${e.target.value}`;
+        createGrid(e.target.value);
+    })
+}
+
+const setResetButton = () => {
+    const resetButton = document.querySelector('.reset-button');
+    resetButton.addEventListener('click', () => {
+        initGame(faceSize);
     })
 }
 
@@ -99,7 +105,8 @@ const setButtonsEvents = () => {
     setClearButton();
     setEraseButton();
     setColorPicker();
-    setChangeFaceSize();
+    setChangeFaceSizeRange();
+    setResetButton();
 }
 
 const initGame = (faceSize) => {
