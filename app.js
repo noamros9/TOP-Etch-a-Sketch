@@ -69,10 +69,17 @@ const setColorPicker = () => {
 }
 
 
+const setChangeFaceSize = () => {
+    const range = document.getElementById('face-size');
+    const faceSizeLabel = document.querySelector('.change-face-size > label');
+    faceSizeLabel.textContent = `${range.getAttribute('value')}X${range.getAttribute('value')}`
+}
+
 const setButtonsEvents = () => {
     setClearButton();
     setEraseButton();
     setColorPicker();
+    setChangeFaceSize();
 }
 
 const initGame = (faceSize) => {
