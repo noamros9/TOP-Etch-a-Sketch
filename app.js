@@ -1,6 +1,6 @@
 let mouseDown = 0;
 let eraseMode = 0;
-let faceSize = 16;
+let faceSize = document.getElementById('face-size').getAttribute('value');
 
 const colorCell = (e) => {
     setTimeout(() => {
@@ -21,8 +21,22 @@ const initDrawWithMouseClicked = () => {
     document.body.onmouseup = function() { mouseDown = 0; }
 } 
 
+const removeExistingGrid = () => {
+    const currentGrid = document.getElementsByClassName('grid')[0];
+    if(currentGrid){
+        document.querySelector('.board').removeChild(currentGrid);
+    }
+}
+
 const createGrid = (faceSize) => {
-    const grid = document.getElementsByClassName('grid')[0];
+    
+    removeExistingGrid();
+
+    // create new grid
+    const grid = document.createElement('div');
+    grid.classList.add('grid');
+    document.querySelector('.board').appendChild(grid);
+
     grid.style.gridTemplateRows = `repeat(${faceSize}, 1fr)`;
     grid.style.gridTemplateColumns = `repeat(${faceSize}, 1fr)`;
     
@@ -69,10 +83,23 @@ const setColorPicker = () => {
 }
 
 
+const setChangeFaceSize = () => {
+    const range = document.getElementById('face-size');
+    const faceSizeLabel = document.querySelector('.change-face-size > label');
+    faceSizeLabel.textContent = `${range.getAttribute('value')}X${range.getAttribute('value')}`
+
+    range.addEventListener('change', (e) => {
+        faceSize = e.target.value;
+        faceSizeLabel.textContent = `${faceSize}X${faceSize}`;
+        createGrid(faceSize);
+    })
+}
+
 const setButtonsEvents = () => {
     setClearButton();
     setEraseButton();
     setColorPicker();
+    setChangeFaceSize();
 }
 
 const initGame = (faceSize) => {
