@@ -77,6 +77,7 @@ const setEraseButton = () => {
 
 const setColorPicker = () => {
     const colorPicker = document.getElementById('color-picker');
+    colorPicker.value = '#000000';  // reset color to black when init
     colorPicker.addEventListener('input', (e) => {
         document.documentElement.style.setProperty('--colored-cell-color', e.target.value);
     })
@@ -96,6 +97,9 @@ const setChangeFaceSizeRange = () => {
 
 const setResetButton = () => {
     const resetButton = document.querySelector('.reset-button');
+    resetButton.removeEventListener('click', () => {
+        initGame(faceSize);
+    })
     resetButton.addEventListener('click', () => {
         initGame(faceSize);
     })
