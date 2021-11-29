@@ -69,6 +69,8 @@ const setClearButton = () => {
 
 const setEraseButton = () => {
     const eraseButton = document.getElementsByClassName('erase-button')[0];
+    eraseButton.textContent = "Erase";
+    eraseMode = 0;
     eraseButton.addEventListener('click', (e) => {
         eraseMode = !eraseMode
         e.target.textContent = e.target.textContent == "Erase" ? "Etch" : "Erase";
